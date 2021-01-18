@@ -1,9 +1,12 @@
-﻿namespace Deloitte_Case_Backend_Cinema_App
+using System;
+
+namespace Deloitte_Case_Backend_Cinema_App
 {
-    internal class Program
+    internal static class Program
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("------------------ Backend Case App ------------------");
         }
     }
 }
