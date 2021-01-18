@@ -8,6 +8,11 @@ namespace Deloitte_Case_Backend_Cinema_App
         {
             Console.WriteLine("------------------ Backend Case App ------------------");
             (int numberOfRows, int numberOfSeatsPerRow) =  GetInitialRowsAndSeats();
+            Cinema cinema = new Cinema(numberOfRows, numberOfSeatsPerRow);
+            
+            Console.WriteLine($"You entered:\nRows: {numberOfRows} \nSeats per row: {numberOfSeatsPerRow}\n");
+        }
+
         private static (int , int) GetInitialRowsAndSeats()
         {
             Console.WriteLine("Please enter the number of rows: ");
