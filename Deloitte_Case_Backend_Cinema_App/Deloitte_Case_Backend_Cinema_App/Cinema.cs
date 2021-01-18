@@ -67,3 +67,8 @@ namespace Deloitte_Case_Backend_Cinema_App
             int maxSeatNumber = _rows * _seats;
             return seatNumber < maxSeatNumber && seatNumber >= 0;
         }
+
+        public decimal CalculatePercentageOccupied()
+        {
+            return (decimal)(100 * NumberOfPurchasedTickets) / (_rows*_seats);
+        }
