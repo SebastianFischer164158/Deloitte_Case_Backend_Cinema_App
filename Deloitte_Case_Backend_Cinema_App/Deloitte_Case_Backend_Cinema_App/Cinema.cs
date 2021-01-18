@@ -40,6 +40,17 @@ namespace Deloitte_Case_Backend_Cinema_App
                 }
             }
         }
+        
+        public void OutputSeatsAndStatus()
+        {
+            for (var row = 0; row < _rows; row++)
+            {
+                for (var seat = 0; seat < _seats; seat++)
+                {
+                    Console.Write($"({_seatArray[row,seat].SeatNumber},{_seatArray[row,seat].SeatStatus})\t");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
         }
-    }
 }
