@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace Deloitte_Case_Backend_Cinema_App
 {
@@ -76,6 +76,39 @@ namespace Deloitte_Case_Backend_Cinema_App
         {
             return (decimal)(100 * NumberOfPurchasedTickets) / (_rows*_seats);
         }
+        
+        public int CalculateCurrentIncome()
+        {
+            //could have put price logic in the booking as it would've made this part redundant
+            int common_price = 10;
+            int result = 0;
+
+            if (Capacity<=50)
+            {
+                return NumberOfPurchasedTickets * common_price; //if capacity is 50 or below price is 10$ for all tickets
+            }
+
+            for (int i = 0; i < _rows; i++)
+            {
+                for (int j = 0; j < _seats; j++)
+                {
+                    int seatNumber = _seatArray[i, j].SeatNumber;
+                    int seatStatus = _seatArray[i, j].SeatStatus;
+                    if (seatStatus != 'R') continue;
+                    if (seatNumber<= _low)
+                    {
+                        result += 12;
+
+                    }
+                    else if (seatNumber >= _high)
+                    {
+                        result += 10;
+                    }
+                }
+            }
+            return result;
+        }
+        
         public int PotentialTotalIncome()
         {
             if (Capacity <= 50)
@@ -84,3 +117,5 @@ namespace Deloitte_Case_Backend_Cinema_App
             }
             return _high * 10 + _low * 12;
         }
+    }
+}
