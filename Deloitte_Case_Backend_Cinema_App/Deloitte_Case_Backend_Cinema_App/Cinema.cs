@@ -6,7 +6,8 @@ namespace Deloitte_Case_Backend_Cinema_App
     {
         private readonly int _rows; 
         private readonly int _seats; //columns
-        
+
+        public int Capacity { get; } //no need for private set as only constructor can change Capacity
         private static Seat[,] _seatArray;
         public int NumberOfPurchasedTickets;
         
