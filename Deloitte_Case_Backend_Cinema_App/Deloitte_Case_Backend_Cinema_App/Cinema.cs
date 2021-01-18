@@ -61,3 +61,9 @@ namespace Deloitte_Case_Backend_Cinema_App
             int row = seatNumber / _seats;
             return _seatArray[row,column].SeatStatus == 'R';
         }
+
+        public bool DoesSeatExist(int seatNumber)
+        {
+            int maxSeatNumber = _rows * _seats;
+            return seatNumber < maxSeatNumber && seatNumber >= 0;
+        }
