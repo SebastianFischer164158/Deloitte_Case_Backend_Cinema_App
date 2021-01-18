@@ -8,6 +8,8 @@ namespace Deloitte_Case_Backend_Cinema_App
         private readonly int _seats; //columns
 
         public int Capacity { get; } //no need for private set as only constructor can change Capacity
+        private readonly int _low;
+        private readonly int _high;
         private static Seat[,] _seatArray;
         public int NumberOfPurchasedTickets;
         
@@ -16,6 +18,8 @@ namespace Deloitte_Case_Backend_Cinema_App
             _rows = numberOfRows;
             _seats = numberOfSeatsPerRow;
             Capacity = _rows * _seats;
+            _low = (int)Math.Floor((double) Capacity / 2);
+            _high = (int)Math.Ceiling((double) Capacity / 2);
             _seatArray = new Seat[numberOfRows, numberOfSeatsPerRow];
             PopulateCinemaRoom(numberOfRows, numberOfSeatsPerRow);
         }
@@ -71,4 +75,12 @@ namespace Deloitte_Case_Backend_Cinema_App
         public decimal CalculatePercentageOccupied()
         {
             return (decimal)(100 * NumberOfPurchasedTickets) / (_rows*_seats);
+        }
+        public int PotentialTotalIncome()
+        {
+            if (Capacity <= 50)
+            {
+                return Capacity * 10;
+            }
+            return _high * 10 + _low * 12;
         }
