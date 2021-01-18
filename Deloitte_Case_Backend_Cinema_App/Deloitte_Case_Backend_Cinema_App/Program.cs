@@ -11,8 +11,30 @@ namespace Deloitte_Case_Backend_Cinema_App
             Cinema cinema = new Cinema(numberOfRows, numberOfSeatsPerRow);
             
             Console.WriteLine($"You entered:\nRows: {numberOfRows} \nSeats per row: {numberOfSeatsPerRow}\n");
+        private static int GetSeatInput(Cinema cinema)
+        {
+            int seatNumber = 0;
+            bool validSeatInput = false;
+            while (!validSeatInput)
+            {
+                Console.WriteLine($"Please enter a seat number between 0 and {cinema.Capacity - 1}");
+                string seatInput = Console.ReadLine();
+                if (!int.TryParse(seatInput, out seatNumber) || !cinema.DoesSeatExist(seatNumber))
+                {
+                    Console.WriteLine("The entered seat does not exist, please try again.");
+                }
+                else if (cinema.IsSeatOccupied(seatNumber))
+                {
+                    Console.WriteLine("The entered seat is already booked! Pick another available seat!");
+                }
+                else
+                {
+                    validSeatInput = true;
+                }
+            }
+            return seatNumber;
         }
-
+        
         private static (int , int) GetInitialRowsAndSeats()
         {
             Console.WriteLine("Please enter the number of rows: ");
