@@ -8,6 +8,8 @@ namespace Deloitte_Case_Backend_Cinema_App
         private readonly int _seats; //columns
         
         private static Seat[,] _seatArray;
+        public int NumberOfPurchasedTickets;
+        
         public Cinema(int numberOfRows, int numberOfSeatsPerRow)
         {
             _rows = numberOfRows;
@@ -17,6 +19,15 @@ namespace Deloitte_Case_Backend_Cinema_App
             PopulateCinemaRoom(numberOfRows, numberOfSeatsPerRow);
         }
 
+        public void BookSeat(int seatNumber)
+        {
+            //necessary logic to go from "1d" to 2d storing. 
+            int column = seatNumber % _seats;
+            int row = seatNumber / _seats;
+            _seatArray[row, column].SeatStatus = 'R';
+            NumberOfPurchasedTickets += 1;
+        }
+        
         private static void PopulateCinemaRoom(int numberOfRows, int numberOfSeatsPerRow)
         {
             int counter = 0;
