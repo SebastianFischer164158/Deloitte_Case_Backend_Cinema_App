@@ -54,4 +54,10 @@ namespace Deloitte_Case_Backend_Cinema_App
             }
             Console.WriteLine();
         }
-}
+
+        public bool IsSeatOccupied(int seatNumber)
+        {
+            int column = seatNumber % _seats;
+            int row = seatNumber / _seats;
+            return _seatArray[row,column].SeatStatus == 'R';
+        }
